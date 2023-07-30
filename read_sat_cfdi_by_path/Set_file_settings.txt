@@ -1,5 +1,0 @@
-FUNCTION Set_file_settings GLOBAL
-  Display.SelectFileDialog.SelectFile Title: $'''Seleccione el archivo ZIP''' InitialDirectory: $'''D:\\Documents''' FileFilter: $'''*.zip''' IsTopMost: True CheckIfFileExists: True SelectedFile=> SelectedFile ButtonPressed=> ButtonPressed2
-  Folder.Create FolderPath: SelectedFile.Directory FolderName: $'''temporal-1''' Folder=> NewFolder
-  Compression.UnzipFiles ArchivePath: SelectedFile DestinationFolder: NewFolder IncludeMask: $'''*.xml'''
-END FUNCTION
