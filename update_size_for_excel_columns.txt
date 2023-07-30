@@ -1,4 +1,3 @@
-
 FUNCTION Update_size_for_excel_columns GLOBAL
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Folio_Fiscal
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Nombre_o_Razón_Social_del_Emisor

@@ -1,11 +1,13 @@
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Folio_Fiscal.InnerText Column: Column_Folio_Fiscal Row: myIndex + 1
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: RFC_Emisor.InnerText Column: Column_RFC_Emisor Row: myIndex + 1
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Nombre_o_Razón_Social_del_Emisor.InnerText Column: Column_Nombre_o_Razón_Social_del_Emisor Row: myIndex + 1
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Fecha_de_Emisión.InnerText Column: Column_Fecha_de_Emisión Row: myIndex + 1
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Subtotal.InnerText Column: Column_Subtotal Row: myIndex + 1
-Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Total.InnerText Column: Column_Total Row: myIndex + 1
-IF TotalImpuestosTransladados.Count >= 1 THEN
-    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: TotalImpuestosTransladados[0].InnerText Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
-ELSE
-    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: 0 Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
-END
+FUNCTION Write_excel_data_flow GLOBAL
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Folio_Fiscal.InnerText Column: Column_Folio_Fiscal Row: myIndex + 1
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: RFC_Emisor.InnerText Column: Column_RFC_Emisor Row: myIndex + 1
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Nombre_o_Razón_Social_del_Emisor.InnerText Column: Column_Nombre_o_Razón_Social_del_Emisor Row: myIndex + 1
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Fecha_de_Emisión.InnerText Column: Column_Fecha_de_Emisión Row: myIndex + 1
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Subtotal.InnerText Column: Column_Subtotal Row: myIndex + 1
+    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Total.InnerText Column: Column_Total Row: myIndex + 1
+    IF TotalImpuestosTransladados.Count >= 1 THEN
+        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: TotalImpuestosTransladados[0].InnerText Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
+    ELSE
+        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: 0 Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
+    END
+END FUNCTION

@@ -1,4 +1,3 @@
-
 FUNCTION Query_xml_file_data_flow GLOBAL
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XMLDocument XPathQuery: $'''//*[local-name()=\"TimbreFiscalDigital\"]/@UUID''' XPathResult=> Folio_Fiscal
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Emisor\"]/@Rfc''' XPathResult=> RFC_Emisor
