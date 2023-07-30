@@ -12,7 +12,7 @@ FUNCTION Main GLOBAL
         Variables.IncreaseVariable Value: myIndex IncrementValue: 1
     END
     CALL Update_size_for_excel_columns
-    SET PathVar TO $'''%SelectedFile.Directory%/%myFileName%'''
+    SET PathVar TO $'''%SelectedFile.Directory%/%SelectedFile.NameWithoutExtension%'''
     Excel.CloseExcel.CloseAndSaveAs Instance: ExcelInstance DocumentFormat: Excel.ExcelFormat.FromExtension DocumentPath: PathVar
     Folder.Delete Folder: NewFolder
 END FUNCTION
