@@ -1,0 +1,8 @@
+FUNCTION Update_size_for_excel_columns GLOBAL
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Folio_Fiscal
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Nombre_o_Razón_Social_del_Emisor
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_RFC_Emisor
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Fecha_de_Emisión
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Total_Impuestos_Transladados
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_At_16
+END FUNCTION

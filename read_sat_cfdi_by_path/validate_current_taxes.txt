@@ -1,0 +1,18 @@
+FUNCTION Validate_current_taxes GLOBAL
+    SET myIndex2 TO 0
+    IF Taxes.Count >= 1 THEN
+        LOOP FOREACH Current_Tax IN Taxes_quote
+            SWITCH Current_Tax.InnerText
+                CASE = 0.000000
+                    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Taxes_amount[myIndex2].innerText Column: Column_Tax_At_0 Row: myIndex + 1
+                CASE = 0.080000
+                    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Taxes_amount[myIndex2].innerText Column: Column_Tax_At_8 Row: myIndex + 1
+                CASE = 0.160000
+                    Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Taxes_amount[myIndex2].innerText Column: Column_Tax_At_16 Row: myIndex + 1
+                DEFAULT
+                    DISABLE Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: 0 Column: Column_Tax_At_0 Row: myIndex + 1
+            END
+            Variables.IncreaseVariable Value: myIndex2 IncrementValue: 1
+        END
+    END
+END FUNCTION

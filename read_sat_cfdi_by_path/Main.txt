@@ -1,0 +1,18 @@
+FUNCTION Main GLOBAL
+    CALL Set_file_settings
+    Excel.LaunchExcel.LaunchUnderExistingProcess Visible: False Instance=> ExcelInstance
+    CALL Set_excel_file_headers_flow
+    Folder.GetFiles Folder: NewFolder FileFilter: $'''*.xml''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
+    SET myIndex TO 1
+    LOOP FOREACH CurrentItem IN Files
+        XML.ReadFromFile File: CurrentItem Encoding: XML.FileEncoding.DefaultEncoding XmlDocument=> XmlDocument
+        CALL Query_xml_file_data_flow
+        CALL Write_excel_data_flow
+        CALL Validate_current_taxes
+        Variables.IncreaseVariable Value: myIndex IncrementValue: 1
+    END
+    CALL Update_size_for_excel_columns
+    SET PathVar TO $'''%SelectedFile.Directory%/%SelectedFile.NameWithoutExtension%'''
+    Excel.CloseExcel.CloseAndSaveAs Instance: ExcelInstance DocumentFormat: Excel.ExcelFormat.FromExtension DocumentPath: PathVar
+    Folder.Delete Folder: NewFolder
+END FUNCTION
