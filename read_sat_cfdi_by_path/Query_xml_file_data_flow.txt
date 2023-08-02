@@ -6,7 +6,8 @@ FUNCTION Query_xml_file_data_flow GLOBAL
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@SubTotal''' XPathResult=> Subtotal
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@Total''' XPathResult=> Total
     XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Impuestos\"]/@TotalImpuestosTrasladados''' XPathResults=> TotalImpuestosTransladados
-    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]''' XPathResults=> Taxes
-    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]/@TasaOCuota''' XPathResults=> Taxes_quote
-    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]/@Importe''' XPathResults=> Taxes_amount
+    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]''' XPathResults=> ImpuestosArr
+    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]/@TasaOCuota''' XPathResults=> Impuestos_TasaOCuotaArr
+    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]/@Base''' XPathResults=> Impuestos_BaseArr
+    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[@TotalImpuestosTrasladados]/*[local-name()=\"Traslados\"]/*[local-name()=\"Traslado\"]/@Importe''' XPathResults=> Impuestos_ImporteArr
 END FUNCTION
