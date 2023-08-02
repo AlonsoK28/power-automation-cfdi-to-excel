@@ -2,7 +2,7 @@ FUNCTION Validate_current_taxes GLOBAL
     SET myIndex2 TO 0
     IF ImpuestosArr.Count >= 1 THEN
         LOOP FOREACH Current_Tax IN Impuestos_TasaOCuotaArr
-            # Validar Tasa o Cuota de los Impuestos del CFDI actual
+            # Validar "Base" e "Importe" de los Impuestos del CFDI actual
             SWITCH Current_Tax.InnerText
                 CASE = 0.000000
                     Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Impuestos_BaseArr[myIndex2].innerText Column: Column_Impuestos_Base_0 Row: myIndex + 1
