@@ -1,0 +1,36 @@
+FUNCTION Validate_current_taxes GLOBAL
+    LOOP FOREACH element IN ImpuestosArr
+        # Subquery para validar "Base" del CFDI actual
+        XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: element XPathQuery: $'''.//*[local-name()=\"Traslado\"]/@Base''' XPathResults=> Subquery_BaseArr
+        # Obtener el atributo "TasaOCuota" del elemento actual para saber si pertenece al 0, 8 ó 16 porciento
+        XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: element XPathQuery: $'''.//*[local-name()=\"Traslado\"]/@TasaOCuota''' XPathResults=> Subquery_BaseWithTasaOCuotaArr
+        IF Subquery_BaseArr.Count >= 1 THEN
+            LOOP FOREACH currentBaseEl IN Subquery_BaseArr
+                SWITCH Subquery_BaseWithTasaOCuotaArr[0].InnerText
+                    CASE = 0.000000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentBaseEl.innerText Column: Column_Impuestos_Base_0 Row: myIndex + 1
+                    CASE = 0.080000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentBaseEl.innerText Column: Column_Impuestos_Base_8 Row: myIndex + 1
+                    CASE = 0.160000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentBaseEl.innerText Column: Column_Impuestos_Base_16 Row: myIndex + 1
+                END
+            END
+        END
+    END
+    # Subquery para validar "Importe" del CFDI actual
+    LOOP FOREACH element2 IN ImpuestosArr
+        XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: element2 XPathQuery: $'''.//*[local-name()=\"Traslado\"]/@Importe''' XPathResults=> Subquery_ImporteArr
+        IF Subquery_ImporteArr.Count >= 1 THEN
+            LOOP FOREACH currentImporteEl IN Subquery_ImporteArr
+                SWITCH Subquery_BaseWithTasaOCuotaArr[0].InnerText
+                    CASE = 0.000000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentImporteEl.innerText Column: Column_Impuestos_Importe_0 Row: myIndex + 1
+                    CASE = 0.080000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentImporteEl.innerText Column: Column_Impuestos_Importe_8 Row: myIndex + 1
+                    CASE = 0.160000
+                        Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentImporteEl.innerText Column: Column_Impuestos_Importe_16 Row: myIndex + 1
+                END
+            END
+        END
+    END
+END FUNCTION
