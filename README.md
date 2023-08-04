@@ -17,8 +17,8 @@
 
 ## Descripcion del proceso
  
-- El proceso `read_sat_cfdi_by_file` permite seleccionar un archivo ZIP para procesar
-- El proceso `read_sat_cfdi_by_path` permite seleccionar un directorio que contenga múltiples  archivos  ZIP para procesar todos al mismo tiempo
+- `read_sat_cfdi_by_file` permite seleccionar un archivo ZIP para procesar
+- `read_sat_cfdi_by_folder` permite seleccionar un directorio que contenga múltiples  archivos  ZIP para procesar todos al mismo tiempo
 
 ## xml xpath query
 Usa el servicio http://xpather.com/ para hacer tus propios `xpath query` al documento `XML`
