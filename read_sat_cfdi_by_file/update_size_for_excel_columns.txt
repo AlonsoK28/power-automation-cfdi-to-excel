@@ -4,5 +4,10 @@ FUNCTION Update_size_for_excel_columns GLOBAL
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_RFC_Emisor
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Fecha_de_Emisión
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Total_Impuestos_Transladados
-    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_At_16
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Base_0
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Base_8
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Base_16
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Importe_0
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Importe_8
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Tax_Importe_16
 END FUNCTION
