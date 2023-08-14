@@ -1,6 +1,6 @@
 FUNCTION Main GLOBAL
     Display.SelectFolder Description: $'''Seleccione el directorio de trabajo''' InitialDirectory: $'''D:\\Downloads''' IsTopMost: False SelectedFolder=> SelectedFolder ButtonPressed=> ButtonPressed
-    IF ButtonPressed = $'''Ok''' THEN
+    IF ButtonPressed = $'''OK''' THEN
         Folder.GetFiles Folder: SelectedFolder FileFilter: $'''*.zip''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> myZipFilesPath
         Folder.Create FolderPath: SelectedFolder FolderName: $'''temporal-1''' Folder=> NewFolder
         LOOP FOREACH currentZipFile IN myZipFilesPath
