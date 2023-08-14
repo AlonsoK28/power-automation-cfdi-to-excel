@@ -20,9 +20,10 @@ FUNCTION Validate_current_taxes GLOBAL
     # Subquery para validar "Importe" del CFDI actual
     LOOP FOREACH element2 IN ImpuestosArr
         XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: element2 XPathQuery: $'''.//*[local-name()=\"Traslado\"]/@Importe''' XPathResults=> Subquery_ImporteArr
+        XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: element2 XPathQuery: $'''.//*[local-name()=\"Traslado\"]/@TasaOCuota''' XPathResults=> Subquery_BaseWithTasaOCuotaArr2
         IF Subquery_ImporteArr.Count >= 1 THEN
             LOOP FOREACH currentImporteEl IN Subquery_ImporteArr
-                SWITCH Subquery_BaseWithTasaOCuotaArr[0].InnerText
+                SWITCH Subquery_BaseWithTasaOCuotaArr2[0].InnerText
                     CASE = 0.000000
                         Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: currentImporteEl.innerText Column: Column_Impuestos_Importe_0 Row: myIndex + 1
                     CASE = 0.080000
