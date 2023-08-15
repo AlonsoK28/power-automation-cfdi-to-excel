@@ -5,9 +5,23 @@ FUNCTION Write_excel_data_flow GLOBAL
     Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Fecha_de_Emisión.InnerText Column: Column_Fecha_de_Emisión Row: myIndex + 1
     Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Subtotal.InnerText Column: Column_Subtotal Row: myIndex + 1
     Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: Total.InnerText Column: Column_Total Row: myIndex + 1
+    #  Validar los Impuestos Transladados
     IF TotalImpuestosTransladados.Count >= 1 THEN
         Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: TotalImpuestosTransladados[0].InnerText Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
     ELSE
         Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: 0 Column: Column_Total_Impuestos_Transladados Row: myIndex + 1
+    END
+    # Validar el Tipo de Comprobante https://conocimiento.blob.core.windows.net/conocimiento/2017/Comerciales/CambiosFiscales/Factura/tipos_de_comprobante_cfdi.html
+    SWITCH TipoDeComprobante[0].InnerText
+        CASE = $'''I'''
+            Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: $'''Ingreso''' Column: Column_Efecto_del_Comprobante Row: myIndex + 1
+        CASE = $'''E'''
+            Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: $'''Egreso''' Column: Column_Efecto_del_Comprobante Row: myIndex + 1
+        CASE = $'''T'''
+            Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: $'''Traslado''' Column: Column_Efecto_del_Comprobante Row: myIndex + 1
+        CASE = $'''P'''
+            Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: $'''Pago''' Column: Column_Efecto_del_Comprobante Row: myIndex + 1
+        CASE = $'''N'''
+            Excel.WriteToExcel.WriteCell Instance: ExcelInstance Value: $'''Nómina''' Column: Column_Efecto_del_Comprobante Row: myIndex + 1
     END
 END FUNCTION

@@ -3,6 +3,7 @@ FUNCTION Query_xml_file_data_flow GLOBAL
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Emisor\"]/@Rfc''' XPathResult=> RFC_Emisor
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Emisor\"]/@Nombre''' XPathResult=> Nombre_o_Razón_Social_del_Emisor
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@Fecha''' XPathResult=> Fecha_de_Emisión
+    XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@TipoDeComprobante''' XPathResults=> TipoDeComprobante
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@SubTotal''' XPathResult=> Subtotal
     XML.ExecuteXPathQuery.ExecuteXPathAndGetFirstValueOnly XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Comprobante\"]/@Total''' XPathResult=> Total
     XML.ExecuteXPathQuery.ExecuteXPath XmlDocument: XmlDocument XPathQuery: $'''//*[local-name()=\"Impuestos\"]/@TotalImpuestosTrasladados''' XPathResults=> TotalImpuestosTransladados
