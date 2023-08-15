@@ -3,6 +3,9 @@ FUNCTION Update_size_for_excel_columns GLOBAL
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Nombre_o_Razón_Social_del_Emisor
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_RFC_Emisor
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Fecha_de_Emisión
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Efecto_del_Comprobante
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Estatus_de_Cancelacion
+    Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Estado_del_Comprobante
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Total_Impuestos_Transladados
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Impuestos_Base_0
     Excel.ResizeColumnsOrRows.AutofitSingleColumn Instance: ExcelInstance Column: Column_Impuestos_Base_8
